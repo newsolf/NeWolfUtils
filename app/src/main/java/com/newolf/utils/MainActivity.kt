@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
+import android.text.TextUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.newolf.utils.app.base.BaseActivity
+import com.newolf.utils.app.utils.NetUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -31,8 +33,38 @@ class MainActivity : BaseActivity() {
             loadData()
         }
         btnNetTest.setOnClickListener {
-
+            netTest()
         }
+    }
+
+    private fun netTest() {
+        val wifiState: String = if (NetUtils.isWifiConnected(mContext)) {
+            "已连接"
+        } else {
+            "未连接"
+        }
+
+        val isConnect: String = if (NetUtils.isNetworkAvailable(mContext)) {
+            "已连接"
+        } else {
+            "未连接"
+        }
+        val netInfo: String = String.format(
+            "WIFI状态: %s \n 数据状态: %s \n 网络连接状态: %s",
+            wifiState,
+            NetUtils.getCurrentNetMode(mContext),
+            isConnect
+        )
+
+        tvShow.setText(netInfo)
+        tvCleanName.setText(R.string.app_name)
+
+        var pingResult: String = NetUtils.pingBaidu()
+        if (TextUtils.isEmpty(pingResult)) {
+            pingResult = "ping faild"
+        }
+
+        tvCleanName.setText(pingResult)
     }
 
     override fun loadData() {
@@ -57,7 +89,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun clearMem() {
-        var cleanName : String = ""
+        var cleanName: String = ""
         val activityManager: ActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val runningAppProcesses = activityManager.runningAppProcesses
         for (runningApp in runningAppProcesses) {
