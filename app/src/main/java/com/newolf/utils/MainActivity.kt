@@ -6,8 +6,10 @@ import android.content.Intent
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.newolf.utils.app.base.BaseActivity
+import com.newolf.utils.app.utils.DistUtils
 import com.newolf.utils.app.utils.NetUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,6 +37,13 @@ class MainActivity : BaseActivity() {
         btnNetTest.setOnClickListener {
             netTest()
         }
+        btnDiskTest.setOnClickListener {
+           diskTest()
+        }
+    }
+
+    private fun diskTest() {
+        DistUtils.getAllStoragesV14(mContext)
     }
 
     private fun netTest() {
@@ -79,11 +88,11 @@ class MainActivity : BaseActivity() {
 
         sb.append("剩余内存：" + (memoryInfo.availMem / 1024 / 1024) + "MB\n");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            sb.append("总内存： " + (memoryInfo.totalMem / 1024 / 1024) + "MB\n");
+            sb.append("总内存： " + (memoryInfo.totalMem / 1024 / 1024) + "MB\n")
         }
         sb.append("内存是否过低：" + memoryInfo.lowMemory);
 
-
+            KeyboardUtils.hideSoftInput(this)
 
         return sb.toString()
     }

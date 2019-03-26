@@ -51,7 +51,7 @@ object NetUtils {
         var isConnected = ""
         val info = getActiveNetworkInfo(context)
         if (null != info) {
-            isConnected = if(info.isConnected){"连接"}else{"未连接"}
+            isConnected = if(info.isConnected && info.type == ConnectivityManager.TYPE_MOBILE ){"已连接"}else{"未连接"}
             if (info.getType() == 1) {
                 netype = 1
             } else {
@@ -101,7 +101,7 @@ object NetUtils {
 
                 val activeInfo = connectivity.activeNetworkInfo
                 if (activeInfo != null) {
-                    return activeInfo.isConnected
+                    return activeInfo.isConnected && (activeInfo.type == ConnectivityManager.TYPE_MOBILE || activeInfo.type == ConnectivityManager.TYPE_WIFI)
                 }
             } catch (var3: Exception) {
             }
