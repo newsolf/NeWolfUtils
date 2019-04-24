@@ -9,7 +9,8 @@
         tools:context=".MainActivity">
 
 
-    <Button android:layout_width="200dp"
+    <Button
+            android:layout_width="@dimen/btn_size"
             android:id="@+id/btnSetting"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -18,10 +19,12 @@
             android:text="Setting"
             android:textStyle="bold"
             android:background="@drawable/shape_bj"
-            android:textSize="48sp"
+            android:textSize="@dimen/btn_text_size"
             android:textColor="@color/colorAccent"
-            android:layout_height="200dp"/>
-    <Button android:layout_width="200dp"
+            android:layout_height="@dimen/btn_size"/>
+
+    <Button
+            android:layout_width="@dimen/btn_size"
             android:id="@+id/btnClean"
             app:layout_constraintLeft_toRightOf="@+id/btnSetting"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,33 +33,64 @@
             android:text="Clean Mem"
             android:textStyle="bold"
             android:background="@drawable/shape_bj"
-            android:textSize="48sp"
+            android:textSize="@dimen/btn_text_size"
             android:textColor="@color/colorAccent"
-            android:layout_height="200dp"/>
-    <Button android:layout_width="200dp"
+            android:layout_height="@dimen/btn_size"/>
+
+    <Button
+            android:layout_width="@dimen/btn_size"
             android:id="@+id/btnNetTest"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSetting"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="60dp"
-            android:text="NetTest"
+            android:text="Net\nTest"
             android:textStyle="bold"
             android:background="@drawable/shape_bj"
-            android:textSize="48sp"
+            android:textSize="@dimen/btn_text_size"
             android:textColor="@color/colorAccent"
-            android:layout_height="200dp"/>
-    <Button android:layout_width="200dp"
+            android:layout_height="@dimen/btn_size"/>
+
+    <Button
+            android:layout_width="@dimen/btn_size"
             android:id="@+id/btnDiskTest"
             app:layout_constraintLeft_toRightOf="@+id/btnNetTest"
             app:layout_constraintTop_toBottomOf="@+id/btnClean"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:text="DiskTest"
+            android:text="Disk\nTest"
             android:textStyle="bold"
             android:background="@drawable/shape_bj"
-            android:textSize="48sp"
+            android:textSize="@dimen/btn_text_size"
             android:textColor="@color/colorAccent"
-            android:layout_height="200dp"/>
+            android:layout_height="@dimen/btn_size"/>
+
+    <Button
+            android:layout_width="@dimen/btn_size"
+            android:id="@+id/btnOpenNavi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNetTest"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:text="Open\nNavi"
+            android:textStyle="bold"
+            android:background="@drawable/shape_bj"
+            android:textSize="@dimen/btn_text_size"
+            android:textColor="@color/colorAccent"
+            android:layout_height="@dimen/btn_size"/>
+    <Button
+            android:layout_width="@dimen/btn_size"
+            android:id="@+id/btnOpenHardwareInfo"
+            app:layout_constraintLeft_toRightOf="@+id/btnOpenNavi"
+            app:layout_constraintTop_toBottomOf="@+id/btnNetTest"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Hard\nInfo"
+            android:textStyle="bold"
+            android:background="@drawable/shape_bj"
+            android:textSize="@dimen/btn_text_size"
+            android:textColor="@color/colorAccent"
+            android:layout_height="@dimen/btn_size"/>
 
     <TextView
             android:id="@+id/tvShow"
@@ -69,6 +103,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
             android:id="@+id/tvCleanName"
             android:layout_width="wrap_content"

@@ -40,6 +40,24 @@ class MainActivity : BaseActivity() {
         btnDiskTest.setOnClickListener {
            diskTest()
         }
+
+        btnOpenNavi.setOnClickListener {
+            openNavi()
+        }
+
+        btnOpenHardwareInfo.setOnClickListener {
+            openHardwareInfo()
+        }
+    }
+
+    private fun openHardwareInfo() {
+        val launchIntent = packageManager.getLaunchIntentForPackage("com.chehejia.car.factorymode")
+        startActivity(launchIntent)
+    }
+
+    private fun openNavi() {
+        val launchIntent = packageManager.getLaunchIntentForPackage("com.navi.tracker")
+        startActivity(launchIntent)
     }
 
     private fun diskTest() {
